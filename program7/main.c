@@ -87,6 +87,12 @@ generate_random10(int32_t *data)
 
     return ;
 }
+/**
+ * Getting input number.
+ *
+ * @return On success, return 0-9 number.
+ *         Otherwise, return -1.
+ */
 static int32_t
 get_input_number(void)
 {
@@ -94,7 +100,7 @@ get_input_number(void)
 
     while (true) {
 	if (read_input("> ", buf, sizeof(buf)) <= 0L) {
-	    return 0L;
+	    return -1L;
 	}
 	int32_t input_number = strtol(buf, NULL, 0);
 	if ((input_number >= 0L) && (input_number < 10L)) {
