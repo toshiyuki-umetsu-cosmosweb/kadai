@@ -3,7 +3,7 @@ SRCS = main.c
 CFLAGS = -std=c99 -Wall -g
 LDFLAGS = -g
 OBJS = $(SRCS:.c=.o)
-TARGET = program2.exe
+TARGET = $(notdir $(shell pwd)).exe
 
 .PHONY : all clean
 
