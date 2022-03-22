@@ -1,21 +1,20 @@
+CC = clang
 SRCS = main.c
-IR_FILES = $(SRCS:.c=.ll)
-ASM_FILES = $(IR_FILES:.ll=.s)
+CFLAGS = -std=c99 -Wall -g
+LDFLAGS = -g
+OBJS = $(SRCS:.c=.o)
 TARGET = program2.exe
 
+.PHONY : all clean
 
 
 all : $(TARGET)
 
-$(TARGET) : $(ASM_FILES)
-	clang $(ASM_FILES) -o $@
+$(TARGET) : $(OBJS)
+	$(CC) $(LDFLAGS) -o $@ $^
 	
-
-%.s : %.ll
-	llc -o $@ $<
-
-%.ll : %.c
-	clang -S -emit-llvm -o $@ $<
+%.o : %.c
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm -f $(TARGET) *.ll *.s
+	rm -f $(TARGET) *.o
