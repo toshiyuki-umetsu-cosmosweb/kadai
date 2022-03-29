@@ -44,6 +44,14 @@ main(int32_t ac, char **av)
     return retval;
 }
 
+/**
+ * Parse arguments and store data.
+ *
+ * @param ac Count of arguments which removed first argument.
+ * @param av Arguments which removed first argument.
+ * @param data_array Array to store data.
+ * @return On success, return true, otherwise, return false.
+ */
 static bool
 parse_arguments(int32_t ac, char **av, int32_t *data_array)
 {
@@ -62,11 +70,28 @@ parse_arguments(int32_t ac, char **av, int32_t *data_array)
 
     return (i == ac);
 }
+/**
+ * Compare number to use qsort.
+ *
+ * @param val1 Pointer of value1.
+ * @param val2 Pointer of value2
+ * @return If val1 is less than value2, return negative integer.
+ *         If val1 is more than value2, return positive integer.
+ *         Otherwise, return 0.
+ */
 static int32_t
 numcmp(const void *val1, const void *val2)
 {
     return *((int32_t*)(val1)) - *((int32_t*)(val2));
 }
+
+/**
+ * Print result.
+ *
+ * @param data_array Data array of results.
+ * @param data_count Count of data.
+ * @param elapse_millis Elapse time in milli seconds.
+ */
 static void
 print_result(int32_t *data_array, int32_t data_count,
 	double elapse_millis)
