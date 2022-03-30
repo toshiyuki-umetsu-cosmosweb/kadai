@@ -16,7 +16,7 @@ main(int32_t ac, char **av)
     srand(time(NULL));
     generate_random10(result_data);
     for (int32_t i = 0L; i < 10L; i++) {
-	printf("%d ", result_data[i]);
+        printf("%d ", result_data[i]);
     }
     printf("\n");
 
@@ -49,18 +49,18 @@ generate_random10(int32_t *data)
     int32_t data_count = 10L;
 
     for (int32_t i = 0L; i < data_count; i++) {
-	num_array[i] = i;
+        num_array[i] = i;
     }
     int32_t store_count = 0L;
     while (data_count > 0L) {
-	int32_t index = get_random_int(data_count);
-	data[store_count] = num_array[index];
-	while (index < data_count) {
-	    num_array[index] = num_array[index + 1];
-	    index++;
-	}
-	data_count--;
-	store_count++;
+        int32_t index = get_random_int(data_count);
+        data[store_count] = num_array[index];
+        while (index < data_count) {
+            num_array[index] = num_array[index + 1];
+            index++;
+        }
+        data_count--;
+        store_count++;
     }
 
     return ;

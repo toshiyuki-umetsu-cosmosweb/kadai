@@ -11,13 +11,13 @@ main(int32_t ac, char **av)
     int32_t retval;
 
     if (ac > 1L) {
-	output_file_path = av[1];
+        output_file_path = av[1];
     }
 
     if (write_proc(output_file_path) == 0L) {
-	retval = EXIT_SUCCESS;
+        retval = EXIT_SUCCESS;
     } else {
-	retval = EXIT_FAILURE;
+        retval = EXIT_FAILURE;
     }
 
     return retval;

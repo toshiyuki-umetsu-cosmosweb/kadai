@@ -20,25 +20,25 @@ read_input(const char *prompt, char *buf, size_t len)
     int32_t retval = -1L;
 
     while (feof(stdin) == 0L) {
-	fprintf(stdout, "%s", prompt);
-	fflush(stdout);
-	if (fgets(buf, len, stdin) != NULL) {
-	    buf[len - 1u] = '\0';
+        fprintf(stdout, "%s", prompt);
+        fflush(stdout);
+        if (fgets(buf, len, stdin) != NULL) {
+            buf[len - 1u] = '\0';
 
-	    len = strlen(buf);
-	    if ((len > 0u) && (buf[len - 1u] == '\n')) {
-		buf[len - 1u] = '\0';
-		len--;
-	    }
-	    if ((len > 0u) && (buf[len - 1u] == '\r')) {
-		buf[len - 1u] = '\0';
-		len--;
-	    }
-	    if (len > 0u) {
-		retval = (int32_t)(len);
-		break;
-	    }
-	}
+            size_t read_len = strlen(buf);
+            if ((read_len > 0u) && (buf[read_len - 1u] == '\n')) {
+                buf[read_len - 1u] = '\0';
+                read_len--;
+            }
+            if ((read_len > 0u) && (buf[read_len - 1u] == '\r')) {
+                buf[read_len - 1u] = '\0';
+                read_len--;
+            }
+            if (read_len > 0u) {
+                retval = (int32_t)(read_len);
+                break;
+            }
+        }
     }
 
     return retval;
