@@ -1,5 +1,5 @@
 CC = clang
-SRCS = main.c read_input.c
+SRCS = $(shell ls -1 *.c)
 OBJS = $(SRCS:.c=.o)
 CFLAGS = -g -Wall
 LDFLAGS = -g -Wall
